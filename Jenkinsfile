@@ -12,6 +12,8 @@ pipeline {
             steps {
                 echo 'Building project...'
                 sh 'echo "Build success!"'
+                sh 'docker ps -a'
+                sh 'kubectl get pod -A'
             }
         }
 
