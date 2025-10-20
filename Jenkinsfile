@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo 'Building project...'
                 sh 'echo "Build success!"'
+                sh 'kubectl get pod -A'
             }
         }
 
