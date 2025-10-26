@@ -8,13 +8,10 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                echo 'Building project...'
-                sh 'echo "Build success!"'
-                sh 'docker ps -a'
-                sh 'kubectl get pod -A'
-            }
+        stage('Check Kubernetes') {
+          steps {
+            sh 'kubectl get nodes'
+          }
         }
 
         stage('Test') {
