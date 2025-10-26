@@ -8,12 +8,6 @@ pipeline {
             }
         }
 
-        stage('Check Kubernetes') {
-          steps {
-            sh 'kubectl get nodes'
-          }
-        }
-
         stage('Test') {
             steps {
                 echo 'Running tests...'
