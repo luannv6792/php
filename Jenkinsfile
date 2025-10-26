@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo 'Running tests...'
                 sh 'docker ps'
+                sh 'kubectl get pod -A'
                 sh 'echo "All tests passed!"'
             }
         }
