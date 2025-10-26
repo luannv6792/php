@@ -11,6 +11,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
+                sh 'docker ps'
                 sh 'echo "All tests passed!"'
             }
         }
