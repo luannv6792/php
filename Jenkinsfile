@@ -36,8 +36,9 @@ pipeline {
        stage('Deploy to Kubernetes') {
             steps {
                 script {
+                    sh "kubectl delete -f k8s/phpinfo_deployment.yml"
                     sh "kubectl apply -f k8s/phpinfo_deployment.yml"
-                    sh "kubectl rollout status deployment/phpinfo-app-deployment"
+                    //sh "kubectl rollout status deployment/phpinfo-app-deployment"
                     sh "kubectl get pod -A"
                 }
             }
