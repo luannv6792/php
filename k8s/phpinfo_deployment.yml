@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpinfo-app-deployment
+  labels:
+    app: phpinfo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpinfo-app
+  template:
+    metadata:
+      labels:
+        app: phpinfo-app
+    spec:
+      containers:
+        - name: phpinfo-app
+          image: luannv67922/php:latest
+          ports:
+            - containerPort: 80
+          # Giúp container restart nếu crash
+          imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpinfo-service
+  labels:
+    app: phpinfo-app
+spec:
+  selector:
+    app: phpinfo-app
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
