@@ -33,16 +33,15 @@ pipeline {
             }
         }
 
-/*        stage('Deploy to Kubernetes') {
+       stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    sh "kubectl apply -f k8s/deployment.yml"
-                    sh "kubectl apply -f k8s/service.yml"
+                    sh "kubectl apply -f k8s/phpinfo_deployment.yml"
                     sh "kubectl rollout status deployment/phpinfo-app-deployment"
+                    sh "kubectl get pod -A"
                 }
             }
         }
-*/
     }
     
     post {
