@@ -41,25 +41,5 @@ spec:
     - name: http
       port: 80
       targetPort: 80
-  type: ClusterIP
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: phpinfo-ingress
-  namespace: app
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: phpinfo.localhost
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: phpinfo-service
-                port:
-                  number: 80
+      nodePort: 30080     # 🟢 NodePort cố định (tuỳ chọn, có thể bỏ để K8s tự chọn)
+  type: NodePort
